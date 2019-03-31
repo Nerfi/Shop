@@ -6,7 +6,7 @@ class TeddiesController < ApplicationController
   end
 
   def show
-    @teddies = Teddy.find(params[:id])
+    @teddy = Teddy.find(params[:id])
 
   end
 end
