@@ -1,14 +1,15 @@
 <div class="container">
   <div class="row">
     <h1>Teddies</h1>
+    <% @teddies.each do |teddy| %>
       <div class=" col-6 col-md-6">
         <div class="thumbnail">
-    <% @teddies.each do |teddy| %>
           <%= link_to image_tag(teddy.photo_url), teddy_path(teddy) %>
           <div class="caption">
             <h3><%= link_to teddy.name, teddy_path(teddy) %></h3>
             <p><%= teddy.clothe.name %></p>
-            <p>$$$</p>
+            <p>Amount: <%= humanized_money_with_symbol(teddy.price) %></p>
+
           </div>
         </div>
       </div>
