@@ -17,6 +17,7 @@ gem 'webpacker'
 #gems for the project
 gem 'faker'
 gem 'money-rails'
+gem 'stripe'
 
 
 group :development do
