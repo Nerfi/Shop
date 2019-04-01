@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_064714) do
+ActiveRecord::Schema.define(version: 2019_04_01_073643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 2019_04_01_064714) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "teddy_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.jsonb "payment"
+    t.bigint "clothe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["clothe_id"], name: "index_orders_on_clothe_id"
   end
 
   create_table "teddies", force: :cascade do |t|
@@ -33,5 +44,6 @@ ActiveRecord::Schema.define(version: 2019_04_01_064714) do
     t.index ["clothe_id"], name: "index_teddies_on_clothe_id"
   end
 
+  add_foreign_key "orders", "clothes"
   add_foreign_key "teddies", "clothes"
 end
